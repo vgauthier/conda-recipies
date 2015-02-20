@@ -1,0 +1,19 @@
+package:
+  name: fontconfig
+  version: 2.11.92
+
+source:
+  fn: fontconfig-2.11.92.tar.gz
+  url: http://www.freedesktop.org/software/fontconfig/release/fontconfig-2.11.92.tar.gz
+
+build:
+  number: 1
+
+requirements:
+  build:
+    - zlib
+
+about:
+  home: http://www.freedesktop.org/wiki/Software/fontconfig/
+  license: GPL
+  summary: "Fontconfig is a library for configuring and customizing font access.""

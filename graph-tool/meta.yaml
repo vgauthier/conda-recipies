@@ -1,0 +1,52 @@
+package:
+    name: graph-tool
+    version: "2.2.36"
+
+source:
+    fn: graph-tool-2.2.36.tar.bz2  # [unix and py2k]
+    url: http://downloads.skewed.de/graph-tool/graph-tool-2.2.36.tar.bz2 # [unix and py2k]
+
+requirements:
+  # Packages required to build the package. python and numpy must be
+  # listed explicitly if they are required.
+  build:
+    - python
+    - numpy
+    - scipy
+    - matplotlib
+    - bzip2 1.0.6
+    - zlib 1.2.7
+    - fontconfig
+    - cairo
+    - py2cairo
+    - cairomm
+    - cgal
+    - fontconfig
+    - sparsehash 2.0.2
+    - boost 1.57.0
+    - expat
+    - graphviz
+  run:
+    - python
+    - numpy
+    - scipy
+    - matplotlib
+    - fontconfig
+    - cairo
+    - cairomm
+    - py2cairo
+    - bzip2 1.0.6
+    - zlib 1.2.7
+    - cgal
+    - sparsehash 2.0.2
+    - boost 1.57.0
+    - expat
+    - graphviz
+
+build:
+  number: 1
+
+about:
+  home: http://graph-tool.skewed.de/
+  license: GPLv3
+  summary: "Graph-tool is an efficient Python module for manipulation and statistical analysis of graphs (a.k.a. networks)."

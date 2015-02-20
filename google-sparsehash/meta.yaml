@@ -1,0 +1,15 @@
+package:
+    name: sparsehash
+    version: "2.0.2"
+
+source:
+    fn: sparsehash-2.0.2.tar.gz # [unix and py2k]
+    url: https://sparsehash.googlecode.com/files/sparsehash-2.0.2.tar.gz # [unix and py2k]
+
+build:
+  number: 1
+
+about:
+  home: https://code.google.com/p/sparsehash/
+  license: BSD New
+  summary: "An extremely memory-efficient hash_map implementation."

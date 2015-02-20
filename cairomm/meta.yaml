@@ -1,0 +1,25 @@
+package:
+    name: cairomm
+    version: "1.11.2"
+
+source:
+    fn: cairomm-1.11.2.tar.gz # [unix and py2k]
+    url: http://cairographics.org/releases/cairomm-1.11.2.tar.gz # [unix and py2k]
+
+requirements:
+  # Packages required to build the package. python and numpy must be
+  # listed explicitly if they are required.
+  build:
+    - python
+    - cairo
+  run:
+    - python
+    - cairo
+
+build:
+  number: 1
+
+about:
+  home: http://cairographics.org/
+  license: LGPL 2.1 and MPL 1.1
+  summary: "cairomm is a C++ wrapper for the cairo graphics library."
