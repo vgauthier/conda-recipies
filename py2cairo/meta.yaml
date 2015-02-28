@@ -1,19 +1,19 @@
 package:
-  name: pycairo
+  name: py2cairo
   version: 1.10.0
 
 source:
-  git_url: git://git.cairographics.org/git/pycairo  # [py34]
+  git_url: git://git.cairographics.org/git/py2cairo # [py2k]
 
 build:
   number: 1
 
 requirements:
   build:
-    - python # [py34]
+    - python # [py2k]
     - cairo
   run:
-    - python # [py34]
+    - python # [py2k]
     - cairo
 
 about:

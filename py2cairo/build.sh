@@ -15,6 +15,9 @@ export LIBTOOLIZE=glibtoolize
 # Seems that sometimes this is required
 chmod -R 777 .*
 
-${PREFIX}/bin/python setup.py install
+# Setup the boost building, this is fairly simple.
+./autogen.sh --prefix="${PREFIX}"
+make
+make install
 
 exit 0

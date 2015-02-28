@@ -3,17 +3,15 @@ package:
     version: "1.11.2"
 
 source:
-    fn: cairomm-1.11.2.tar.gz # [unix and py2k]
-    url: http://cairographics.org/releases/cairomm-1.11.2.tar.gz # [unix and py2k]
+    fn: cairomm-1.11.2.tar.gz # [unix]
+    url: http://cairographics.org/releases/cairomm-1.11.2.tar.gz # [unix]
 
 requirements:
   # Packages required to build the package. python and numpy must be
   # listed explicitly if they are required.
   build:
-    - python
     - cairo
   run:
-    - python
     - cairo
 
 build:

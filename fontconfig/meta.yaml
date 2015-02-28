@@ -12,6 +12,8 @@ build:
 requirements:
   build:
     - zlib
+  run:
+    - zlib
 
 about:
   home: http://www.freedesktop.org/wiki/Software/fontconfig/

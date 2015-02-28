@@ -1,10 +1,10 @@
 package:
     name: graph-tool
-    version: "2.2.36"
+    version: "2.2.36.1"
 
 source:
-    fn: graph-tool-2.2.36.tar.bz2  # [unix and py2k]
-    url: http://downloads.skewed.de/graph-tool/graph-tool-2.2.36.tar.bz2 # [unix and py2k]
+    fn: graph-tool-2.2.36.tar.bz2  # [unix]
+    url: http://downloads.skewed.de/graph-tool/graph-tool-2.2.36.tar.bz2 # [unix]
 
 requirements:
   # Packages required to build the package. python and numpy must be
@@ -14,16 +14,17 @@ requirements:
     - numpy
     - scipy
     - matplotlib
-    - bzip2 1.0.6
-    - zlib 1.2.7
+    - bzip2
+    - zlib
     - fontconfig
     - cairo
-    - py2cairo
     - cairomm
+    - py2cairo # [py2k]
+    - pycairo # [py3k]
     - cgal
     - fontconfig
     - sparsehash 2.0.2
-    - boost 1.57.0
+    - boost >=1.57.0
     - expat
     - graphviz
   run:
@@ -34,12 +35,13 @@ requirements:
     - fontconfig
     - cairo
     - cairomm
-    - py2cairo
-    - bzip2 1.0.6
-    - zlib 1.2.7
+    - py2cairo # [py2k]
+    - pycairo # [py3k]
+    - bzip2
+    - zlib
     - cgal
     - sparsehash 2.0.2
-    - boost 1.57.0
+    - boost >=1.57.0
     - expat
     - graphviz
 
