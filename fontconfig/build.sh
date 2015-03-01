@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/bash
 
 # Ensure we are not using MacPorts, but the native OS X compilers
 export PATH=/bin:/sbin:/usr/sbin:/usr/bin:/usr/local/bin
@@ -7,7 +7,10 @@ export PATH=/bin:/sbin:/usr/sbin:/usr/bin:/usr/local/bin
 # this seems to be the main reason why the build environment is different in
 # conda compared to compiling on the command line. Linking against libc++ does
 export MACOSX_DEPLOYMENT_TARGET="10.10"
-export OS=osx-64
+
+if [ $OSX_ARCH == "x86_64" ]; then
+  export OS=osx-64
+fi
 
 # Seems that sometimes this is required
 chmod -R 777 .*

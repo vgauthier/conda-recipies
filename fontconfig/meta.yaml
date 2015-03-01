@@ -3,8 +3,8 @@ package:
   version: 2.11.92
 
 source:
-  fn: fontconfig-2.11.92.tar.gz
-  url: http://www.freedesktop.org/software/fontconfig/release/fontconfig-2.11.92.tar.gz
+  fn: fontconfig-2.11.92.tar.gz # [unix]
+  url: http://www.freedesktop.org/software/fontconfig/release/fontconfig-2.11.92.tar.gz # [unix]
 
 build:
   number: 1

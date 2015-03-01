@@ -23,7 +23,7 @@ requirements:
     - pycairo # [py3k]
     - cgal
     - fontconfig
-    - sparsehash 2.0.2
+    - sparsehash >=2.0.2
     - boost >=1.57.0
     - expat
     - graphviz
@@ -40,7 +40,7 @@ requirements:
     - bzip2
     - zlib
     - cgal
-    - sparsehash 2.0.2
+    - sparsehash >=2.0.2
     - boost >=1.57.0
     - expat
     - graphviz
