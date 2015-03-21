@@ -1,11 +1,10 @@
 package:
   name: graph-tool
-  version: "2.2.37"
+  version: "2.2.36"
 
 source:
   git_url: https://git.skewed.de/count0/graph-tool.git
-    #fn: graph-tool-2.2.36.tar.bz2  # [unix]
-    #url: http://downloads.skewed.de/graph-tool/graph-tool-2.2.36.tar.bz2 # [unix]
+  git_tag: release-2.2.36
 
 requirements:
   # Packages required to build the package. python and numpy must be
@@ -26,6 +25,7 @@ requirements:
     - sparsehash >=2.0.2
     - boost >=1.56.0
     - cgal
+    - mpfr
     - gmp
     - expat
     - graphviz
@@ -44,6 +44,7 @@ requirements:
     - sparsehash >=2.0.2
     - boost >=1.56.0
     - cgal
+    - mpfr
     - gmp
     - expat
     - graphviz

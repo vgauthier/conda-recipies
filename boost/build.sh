@@ -27,8 +27,7 @@ mkdir -vp ${PREFIX}/lib;
   --with-python-root="${PREFIX}" \
   --with-python="${PYTHON}" \
   --libdir="${LIBRARY_PATH}" \
-  --with-libraries=python,regex;
-
+  --with-libraries=all;
 
 sed -i'.bak' -e's/^using python.*;//' ./project-config.jam
 
@@ -60,18 +59,14 @@ else
     echo "# Build symbolic link to libpython3.4"
   fi
 
-
-  ./b2 -q toolset=clang address-model=64 \
+  # address-model=64
+  #   --with-toolset=clang \
+  ./b2 -q toolset=clang \
     cxxflags="-std=c++11 -stdlib=libc++ -mmacosx-version-min=${MACOSX_DEPLOYMENT_TARGET}" \
     linkflags="-stdlib=libc++ -mmacosx-version-min=${MACOSX_DEPLOYMENT_TARGET}" \
     include="${PY_INC}" \
     --layout=tagged \
-    --with-toolset=clang \
-    --with-mpi \
-    --with-regex \
-    --with-python \
     stage;
-
 fi
 
 ./b2 install

@@ -1,0 +1,28 @@
+package:
+    name: cgal
+    version: "4.5.2"
+
+source:
+    fn: CGAL-4.5.2.tar.bz2 # [unix]
+    url: https://gforge.inria.fr/frs/download.php/file/34511/CGAL-4.5.2.tar.bz2 # [unix]
+    md5: 8d0b4dc414477e566e8f1940594ff805
+
+requirements:
+  # Packages required to build the package. python and numpy must be
+  # listed explicitly if they are required.
+  build:
+    - boost
+    - gmp
+    - mpfr
+  run:
+    - boost
+    - gmp
+    - mpfr
+
+build:
+  number: 1
+
+about:
+  home: http://www.cgal.org/
+  license: GPL/LGPL
+  summary: "Computational Geometry Algorithms Library"

@@ -1,0 +1,23 @@
+package:
+    name: mpfr
+    version: "3.1.2"
+
+source:
+    fn: mpfr-3.1.2.tar.gz # [unix]
+    url: http://www.mpfr.org/mpfr-current/mpfr-3.1.2.tar.gz # [unix]
+
+requirements:
+  # Packages required to build the package. python and numpy must be
+  # listed explicitly if they are required.
+  build:
+    - gmp
+  run:
+    - gmp
+
+build:
+  number: 1
+
+about:
+  home: http://www.mpfr.org/
+  license: GPL/LGPL
+  summary: "The MPFR library is a C library for multiple-precision floating-point computations with correct rounding"
