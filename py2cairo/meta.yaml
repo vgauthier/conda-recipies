@@ -12,10 +12,21 @@ requirements:
   build:
     - python # [py2k]
     - cairo
+    - expat
+    - bzip2
+    - zlib
+    - fontconfig
+    - freetype
+    - libpng15
   run:
     - python # [py2k]
     - cairo
-
+    - expat
+    - bzip2
+    - zlib
+    - fontconfig
+    - freetype
+    - libpng15
 about:
   home: http://www.freedesktop.org/wiki/Software/fontconfig/
   license: LGPL 2.1 and MPL 1.1

@@ -1,0 +1,21 @@
+package:
+  name: libpng15
+  version: 1.5.21
+
+source:
+  fn: libpng-1.5.21.tar.xz
+  url: http://downloads.sourceforge.net/project/libpng/libpng15/1.5.21/libpng-1.5.21.tar.xz
+
+build:
+  number: 1
+
+requirements:
+  build:
+    - zlib
+  run:
+    - zlib
+
+about:
+  home: http://libpng.sourceforge.net/
+  license: LGPL 2.1 and MPL 1.1
+  summary: "This is an open source project to develop and maintain the reference library for use in applications that read, create, and manipulate PNG"

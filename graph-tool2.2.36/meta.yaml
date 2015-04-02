@@ -16,7 +16,8 @@ requirements:
     - matplotlib
     - bzip2
     - zlib
-    - fontconfig
+    - expat
+    - graphviz
     - cairo
     - cairomm
     - py2cairo # [py2k]
@@ -27,27 +28,25 @@ requirements:
     - cgal
     - mpfr
     - gmp
-    - expat
-    - graphviz
   run:
     - python
     - numpy
     - scipy
     - matplotlib
+    - bzip2
+    - zlib
+    - expat
+    - graphviz
     - fontconfig
     - cairo
     - cairomm
     - py2cairo # [py2k]
     - pycairo # [py3k]
-    - bzip2
-    - zlib
     - sparsehash >=2.0.2
     - boost >=1.56.0
     - cgal
     - mpfr
     - gmp
-    - expat
-    - graphviz
 
 build:
   number: 1

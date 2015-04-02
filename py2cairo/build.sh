@@ -16,7 +16,7 @@ export LIBTOOLIZE=glibtoolize
 chmod -R 777 .*
 
 # Setup the boost building, this is fairly simple.
-./autogen.sh --prefix="${PREFIX}"
+./autogen.sh --prefix="${PREFIX}" --enable-shared=no
 make
 make install
 

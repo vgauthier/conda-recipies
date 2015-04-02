@@ -14,6 +14,8 @@ chmod -R 777 .*
 
 # Setup the boost building, this is fairly simple.
 export PKG_CONFIG_PATH="${PREFIX}/lib/pkgconfig":/opt/X11/lib/pkgconfig
+export CPPFLAGS="-I${PREFIX}/include"
+export LDFLAGS="-L${PREFIX}/lib -headerpad"
 
 # on the Mac, using py34 with at least conda 3.7.3 requires a symlink for the shared library:
 if [ $OSX_ARCH == "x86_64" -a $PY_VER == "3.4" ]; then

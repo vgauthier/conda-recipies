@@ -15,8 +15,9 @@ chmod -R 777 .*
 export BOOST_ROOT=${PREFIX}
 export GMP_ROOT=${PREFIX}
 export MPFR_ROOT=${PREFIX}
+
 # Setup the boost building, this is fairly simple.
-cmake -DCMAKE_INSTALL_PREFIX:PATH=${PREFIX} .
+cmake -DCMAKE_INSTALL_PREFIX:PATH=${PREFIX} -DCMAKE_LIBRARY_PATH=${PREFIX}/lib .
 make
 make install
 

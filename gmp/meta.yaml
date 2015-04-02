@@ -1,0 +1,15 @@
+package:
+    name: gmp
+    version: "6.0.0a"
+
+source:
+    fn: gmp-6.0.0a.tar.bz2 # [unix]
+    url: https://gmplib.org/download/gmp/gmp-6.0.0a.tar.bz2 # [unix]
+
+build:
+  number: 1
+
+about:
+  home: https://gmplib.org/
+  license: GPL/LGPL
+  summary: "GMP is a free library for arbitrary precision arithmetic, operating on signed integers, rational numbers, and floating-point numbers."

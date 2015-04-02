@@ -11,8 +11,10 @@ requirements:
   # listed explicitly if they are required.
   build:
     - cairo
+    - sigcpp
   run:
     - cairo
+    - sigcpp
 
 build:
   number: 1
