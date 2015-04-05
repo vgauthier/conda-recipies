@@ -15,7 +15,7 @@ requirements:
     - matplotlib
     - bzip2
     - zlib
-    - expat
+    - expat >=2.1.0.1
     - graphviz
     - cairo
     - cairomm
@@ -23,7 +23,8 @@ requirements:
     - pycairo # [py3k]
     - fontconfig
     - sparsehash >=2.0.2
-    - boost >=1.56.0
+    - boost >=1.56.0 # [py3k]
+    - boost >=1.56.0 # [py2k]
     - cgal
     - mpfr
     - gmp
@@ -34,7 +35,7 @@ requirements:
     - matplotlib
     - bzip2
     - zlib
-    - expat
+    - expat >=2.1.0.1
     - graphviz
     - cairo
     - cairomm
@@ -42,7 +43,8 @@ requirements:
     - pycairo # [py3k]
     - fontconfig
     - sparsehash >=2.0.2
-    - boost >=1.56.0
+    - boost >=1.56.0 # [py3k]
+    - boost >=1.56.0 # [py2k]
     - cgal
     - mpfr
     - gmp

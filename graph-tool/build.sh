@@ -15,7 +15,11 @@ chmod -R 777 .*
 # Setup the boost building, this is fairly simple.
 export PKG_CONFIG_PATH="${PREFIX}/lib/pkgconfig":/opt/X11/lib/pkgconfig
 export CPPFLAGS="-I${PREFIX}/include"
-export LDFLAGS="-L${PREFIX}/lib -headerpad"
+export LDFLAGS="-L${PREFIX}/lib -mmacosx-version-min=${MACOSX_DEPLOYMENT_TARGET} -arch x86_64 -Wl,-headerpad_max_install_names -fPIC -fno-common"
+export ARCHFLAGS="-arch x86_64"
+export DYLD_FALLBACK_LIBRARY_PATH="${PREFIX}/lib"
+export CXXFLAGS="-std=c++11 -stdlib=libc++"
+export PYTHON_EXTRA_LDFLAGS="-L${PREFIX}/bin"
 
 # on the Mac, using py34 with at least conda 3.7.3 requires a symlink for the shared library:
 if [ $OSX_ARCH == "x86_64" -a $PY_VER == "3.4" ]; then
@@ -23,14 +27,24 @@ if [ $OSX_ARCH == "x86_64" -a $PY_VER == "3.4" ]; then
   echo "# Build symbolic link from py3cairo.h"
 fi
 
+if [ $OSX_ARCH == "x86_64" -a $PY_VER == "3.3" ]; then
+  ( cd $PREFIX/include/pycairo && ln -s py3cairo.h pycairo.h )
+  echo "# Build symbolic link from py3cairo.h"
+fi
+
+
 ./autogen.sh
 ./configure --prefix="${PREFIX}" \
   CC=/usr/bin/clang \
-  CXX=/usr/bin/clang++ \
+  CXX=/usr/bin/clang \
+  CPPFLAGS="-I${PREFIX}/include" \
+  CXXFLAGS="-std=c++11 -stdlib=libc++" \
+  ARCHFLAGS="-arch x86_64" \
+  PYTHON_EXTRA_LDFLAGS="-L${PREFIX}/bin" \
   PKG_CONFIG_PATH="${PREFIX}/lib/pkgconfig:/opt/X11/lib/pkgconfig" \
-  --with-boost="${PREFIX}"
+  --with-boost="${PREFIX}/lib/"
 
-make CC=/usr/bin/clang CXX=/usr/bin/clang++
+make
 make install
 
 exit 0

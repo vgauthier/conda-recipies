@@ -59,6 +59,11 @@ else
     echo "# Build symbolic link to libpython3.4"
   fi
 
+  if [ "$OSX_ARCH" == "x86_64" -a "$PY_VER" == "3.3" ]; then
+    ( cd $PREFIX/lib && ln -s libpython3.3m.dylib libpython3.3.dylib )
+    echo "# Build symbolic link to libpython3.3"
+  fi
+
   # address-model=64
   #   --with-toolset=clang \
   ./b2 -q toolset=clang \

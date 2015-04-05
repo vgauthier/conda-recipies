@@ -3,17 +3,17 @@ package:
   version: 1.10.0
 
 source:
-  git_url: git://git.cairographics.org/git/pycairo  # [py34]
+  git_url: git://git.cairographics.org/git/pycairo  # [py3k]
 
 build:
   number: 1
 
 requirements:
   build:
-    - python # [py34]
+    - python # [py3k]
     - cairo
   run:
-    - python # [py34]
+    - python # [py3k]
     - cairo
 
 about:
