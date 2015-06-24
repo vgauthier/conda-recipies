@@ -1,0 +1,27 @@
+package:
+    name: boost
+    version: "1.57.0"
+
+source:
+    fn: boost_1_57_0.tar.gz # [unix]
+    url: http://downloads.sourceforge.net/project/boost/boost/1.57.0/boost_1_57_0.tar.gz # [unix]
+
+requirements:
+  # Packages required to build the package. python and numpy must be
+  # listed explicitly if they are required.
+  build:
+    - python
+    - bzip2 >=1.0.6
+    - zlib >=1.2.7
+  run:
+    - python
+    - bzip2 >=1.0.6
+    - zlib >=1.2.7
+
+build:
+  number: 1
+
+about:
+  home: http://www.boost.org/
+  license: Boost Software License
+  summary: "Boost provides free peer-reviewed portable C++ source libraries."

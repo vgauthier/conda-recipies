@@ -1,0 +1,23 @@
+package:
+  name: gettext
+  version: "0.19.4"
+
+source:
+  fn: gettext-0.19.4.tar.xz
+  url: http://ftpmirror.gnu.org/gettext/gettext-0.19.4.tar.xz
+
+requirements:
+  # Packages required to build the package. python and numpy must be
+  # listed explicitly if they are required.
+  build:
+    - zlib
+
+  run:
+    - zlib
+
+build:
+  number: 1
+
+about:
+  home: http://www.gnu.org/software/gettext/gettext.html
+  license: GPLv3

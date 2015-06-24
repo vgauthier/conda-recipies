@@ -4,7 +4,7 @@ package:
 
 source:
   git_url: https://git.skewed.de/count0/graph-tool.git
-  git_tag: release-2.2.36
+  git_tag: release-2.2.39
 
 requirements:
   # Packages required to build the package. python and numpy must be

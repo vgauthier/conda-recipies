@@ -1,14 +1,14 @@
 #!/bin/bash
-
-export CFLAGS="-I$PREFIX/include -L$PREFIX/lib"
-export CPPFLAGS="-I${PREFIX}/include"
-export LDFLAGS="-L${PREFIX}/lib"
+export PKG_CONFIG_PATH="${PREFIX}/lib/pkgconfig":/usr/local/lib/pkgconfig:/opt/X11/lib/pkgconfig
+export CFLAGS="-I$PREFIX/include  -I/usr/local/include -L$PREFIX/lib -L/usr/local/lib"
+export CPPFLAGS="-I${PREFIX}/include -I/usr/local/include"
+export LDFLAGS="-L$PREFIX/lib -L/usr/local/lib"
 
 ./configure                 \
     --prefix=$PREFIX        \
     --disable-static        \
-    --disable-gobject       \
-    --enable-warnings       \
+    --enable-gobject        \
+    --disable-warnings       \
     --enable-ft             \
     --enable-ps             \
     --enable-pdf            \

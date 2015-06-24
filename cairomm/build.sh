@@ -11,6 +11,7 @@ export MACOSX_DEPLOYMENT_TARGET="10.10"
 # Seems that sometimes this is required
 chmod -R 777 .*
 
+
 # Setup the boost building, this is fairly simple.
 ./configure --prefix=${PREFIX}
 make

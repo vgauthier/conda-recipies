@@ -1,11 +1,10 @@
 package:
   name: cairo
-  version: 1.12.18
+  version: 1.14.2
 
 source:
-  fn: cairo-1.12.18.tar.xz
-  url: http://cairographics.org/releases/cairo-1.12.18.tar.xz
-  md5: 8e4ff32b82c3b39387eb6f5c59ef848e
+  fn: cairo-1.14.2.tar.xz
+  url: http://cairographics.org/releases/cairo-1.14.2.tar.xz
 
 build:
   number: 1
