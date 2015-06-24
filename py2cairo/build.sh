@@ -9,14 +9,15 @@ export PATH=/bin:/sbin:/usr/sbin:/usr/bin:/usr/local/bin
 export MACOSX_DEPLOYMENT_TARGET="10.10"
 export OS=osx-64
 
-export ACLOCAL_FLAGS="-I /usr/local/Cellar/pkg-config/0.28/share/aclocal/"
+export CFLAGS="-I${PREFIX}/include -L$PREFIX/lib"
+export ACLOCAL_FLAGS="-I/usr/local/Cellar/pkg-config/0.28/share/aclocal/"
 export LIBTOOLIZE=glibtoolize
 
 # Seems that sometimes this is required
 chmod -R 777 .*
 
 # Setup the boost building, this is fairly simple.
-./autogen.sh --prefix="${PREFIX}" --enable-shared=no
+./autogen.sh --prefix="${PREFIX}" --enable-shared=yes
 make
 make install
 

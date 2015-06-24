@@ -24,11 +24,12 @@ requirements:
     - sparsehash >=2.0.2
     - boost >=1.56.0 # [py3k]
     - boost >=1.56.0 # [py2k]
-    - cgal
+    - cgal ==4.5.2
     - mpfr
     - gmp
     - py2cairo # [py2k]
     - pycairo # [py3k]
+    - libpng15
 
   run:
     - python
@@ -45,11 +46,12 @@ requirements:
     - sparsehash >=2.0.2
     - boost >=1.56.0 # [py3k]
     - boost >=1.56.0 # [py2k]
-    - cgal
+    - cgal ==4.5.2
     - mpfr
     - gmp
     - py2cairo # [py2k]
     - pycairo # [py3k]
+    - libpng15
 
 build:
   number: 1

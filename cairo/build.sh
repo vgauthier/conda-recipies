@@ -1,19 +1,28 @@
 #!/bin/bash
-export PKG_CONFIG_PATH="${PREFIX}/lib/pkgconfig":/usr/local/lib/pkgconfig:/opt/X11/lib/pkgconfig
-export CFLAGS="-I$PREFIX/include  -I/usr/local/include -L$PREFIX/lib -L/usr/local/lib"
-export CPPFLAGS="-I${PREFIX}/include -I/usr/local/include"
-export LDFLAGS="-L$PREFIX/lib -L/usr/local/lib"
+
+
+
+export CFLAGS="-I$PREFIX/include -L$PREFIX/lib"
+
+# As of Mac OS 10.8, X11 is no longer included by default ( https://support.apple.com/en-us/HT201341 ).
+# Due to this change, we disable building X11 support for cairo on Mac by default.
+export XWIN_ARGS=""
+if [ `uname` == Darwin ]; then
+   export XWIN_ARGS="--disable-gtk-doc --disable-xlib -disable-xcb --disable-glitz"
+fi
+
 
 ./configure                 \
     --prefix=$PREFIX        \
     --disable-static        \
-    --enable-gobject        \
-    --disable-warnings       \
+    --disable-gobject       \
+    --enable-warnings       \
     --enable-ft             \
     --enable-ps             \
     --enable-pdf            \
     --enable-svg            \
-    --disable-gtk-doc
+    --disable-gtk-doc       \
+    $XWIN_ARGS
 make
 make install
 

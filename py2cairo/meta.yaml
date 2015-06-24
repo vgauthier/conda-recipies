@@ -6,7 +6,7 @@ source:
   git_url: git://git.cairographics.org/git/py2cairo # [py2k]
 
 build:
-  number: 1
+  number: 3
 
 requirements:
   build:

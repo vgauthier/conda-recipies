@@ -20,8 +20,9 @@ export ARCHFLAGS="-arch x86_64"
 #export DYLD_FALLBACK_LIBRARY_PATH="${PREFIX}/lib"
 export CXXFLAGS="-std=c++11 -stdlib=libc++"
 #export PYTHON_EXTRA_LDFLAGS="-L${PREFIX}/bin"
-export DYLD_LIBRARY_PATH=${prefix}/lib
-export LD_LIBRARY_PATH=${prefix}/lib
+#export DYLD_LIBRARY_PATH=${PREFIX}/lib
+#export LD_LIBRARY_PATH=${PREFIX}/lib
+#export DYLD_FALLBACK_LIBRARY_PATH=${PREFIX}/lib
 
 # on the Mac, using py34 with at least conda 3.7.3 requires a symlink for the shared library:
 if [ $OSX_ARCH == "x86_64" -a $PY_VER == "3.4" ]; then
@@ -43,7 +44,7 @@ fi
   ARCHFLAGS="-arch x86_64" \
   PYTHON_EXTRA_LDFLAGS="-lpython2.7 -ldl -framework CoreFoundation -u _PyMac_Error" \
   PKG_CONFIG_PATH="${PREFIX}/lib/pkgconfig:/opt/X11/lib/pkgconfig" \
-  LDFLAGS="-L${PREFIX}/lib -mmacosx-version-min=${MACOSX_DEPLOYMENT_TARGET} -arch x86_64 -Wl,-headerpad_max_install_names -fPIC -fno-common" \
+  LDFLAGS="-L${PREFIX}/lib -mmacosx-version-min=${MACOSX_DEPLOYMENT_TARGET} -arch x86_64 -Wl,-flat_namespace  -headerpad_max_install_names -fPIC -fno-common" \
   --disable-debug \
   --disable-dependency-tracking \
   --disable-optimization
