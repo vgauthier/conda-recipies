@@ -34,7 +34,6 @@ export INCLUDE_PATH="${PREFIX}/include"
   --disable-debug \
   --with-boost="${LIBRARY_PATH}" \
   --disable-dependency-tracking \
-  --disable-optimization \
   --with-python-module-path="${PREFIX}/lib/python3.4/site-packages" \
   --with-boost-python=boost_python3
 
