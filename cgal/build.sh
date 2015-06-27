@@ -17,7 +17,12 @@ export GMP_ROOT=${PREFIX}
 export MPFR_ROOT=${PREFIX}
 
 # Setup the boost building, this is fairly simple.
-cmake -DCMAKE_INSTALL_PREFIX:PATH=${PREFIX} -DCMAKE_LIBRARY_PATH=${PREFIX}/lib .
+cmake -DCMAKE_INSTALL_PREFIX:PATH=${PREFIX} \
+  -DCMAKE_BUILD_WITH_INSTALL_RPATH=ON \
+  -DWITH_CGAL_Qt3=OFF \
+  -DWITH_CGAL_Qt4=OFF \
+  -DWITH_CGAL_ImageIO=OFF \
+  -DCMAKE_LIBRARY_PATH=${PREFIX}/lib .
 make
 make install
 

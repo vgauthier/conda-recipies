@@ -1,5 +1,0 @@
-package: boost
-script:
-  - conda build .
-  - conda build --python 3.4 .
-build_targets: conda

@@ -22,8 +22,7 @@ requirements:
     - cairomm
     - fontconfig
     - sparsehash >=2.0.2
-    - boost >=1.56.0 # [py3k]
-    - boost >=1.56.0 # [py2k]
+    - boost
     - cgal ==4.5.2
     - mpfr
     - gmp
@@ -44,8 +43,7 @@ requirements:
     - cairomm
     - fontconfig
     - sparsehash >=2.0.2
-    - boost >=1.56.0 # [py3k]
-    - boost >=1.56.0 # [py2k]
+    - boost
     - cgal ==4.5.2
     - mpfr
     - gmp
