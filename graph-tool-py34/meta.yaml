@@ -54,10 +54,6 @@ requirements:
 build:
   number: 1
   binary_relocation: true
-  # Binary files may contain the build prefix and need it replaced with the
-  # install prefix at installation time.  Conda can automatically identify
-  # and register such files:
-  #detect_binary_files_with_prefix: true
 
 about:
   home: http://graph-tool.skewed.de/
