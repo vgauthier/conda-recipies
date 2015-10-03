@@ -1,0 +1,35 @@
+package:
+  name: fonttools
+  version: !!str 2.4
+
+source:
+  fn: FontTools-2.4.tar.gz
+  url: https://pypi.python.org/packages/source/F/FontTools/FontTools-2.4.tar.gz
+  md5: 304b20e6109787c0ff4467d2b9f7f2c5
+
+requirements:
+  build:
+    - python
+    - numpy
+
+  run:
+    - python
+    - numpy
+    
+test:
+  # Python imports
+  imports:
+    - fontTools
+    - fontTools.encodings
+    - fontTools.misc
+    - fontTools.pens
+    - fontTools.ttLib
+    - fontTools.ttLib.tables
+    - fontTools.ttLib.test
+
+
+
+about:
+  home: http://fonttools.sourceforge.net/
+  license: BSD License
+  summary: 'Tools to manipulate font files'

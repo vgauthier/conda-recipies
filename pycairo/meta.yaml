@@ -12,9 +12,11 @@ requirements:
   build:
     - python # [py3k]
     - cairo
+    - freetype
   run:
     - python # [py3k]
     - cairo
+    - freetype
 
 about:
   home: http://www.freedesktop.org/wiki/Software/fontconfig/

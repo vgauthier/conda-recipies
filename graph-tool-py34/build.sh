@@ -20,6 +20,13 @@ if [ `uname` == Darwin ]; then
   export LINKFLAGS="${LINKFLAGS} -stdlib=libc++ -L${LIBRARY_PATH} -L${PREFIX}/lib/python3.4/config-3.4m -Wl,-headerpad_max_install_names -fPIC -fno-common"
   export INCLUDE_PATH="${PREFIX}/include"
 
+
+
+  # fix some issue with pyqt
+  # http://stackoverflow.com/questions/20590113/syntaxerror-when-using-cx-freeze-on-pyqt-app
+  rm -rf ${PREFIX}/lib/python3.4/site-packages/PyQt4/uic/port_v2
+  mv ${PREFIX}/lib/python3.4/site-packages/PyQt4/uic/port_v3 ${PREFIX}/lib/python3.4/site-packages/PyQt4/uic/port_v2
+
   ./autogen.sh
   ./configure --prefix="${PREFIX}" \
     CC=/usr/bin/clang \

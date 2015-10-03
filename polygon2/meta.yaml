@@ -1,0 +1,32 @@
+package:
+  name: polygon2
+  version: !!str 2.0.6
+
+source:
+  fn: Polygon2-2.0.6.zip
+  url: https://bitbucket.org/jraedler/polygon2/downloads/Polygon2-2.0.6.zip
+  md5: a35b44a14ff54c53aceea5bb06b1c3ef
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - numpy
+
+  run:
+    - python
+    - numpy
+
+test:
+  # Python imports
+  imports:
+    - Polygon
+
+about:
+  home: http://www.j-raedler.de/projects/polygon/
+  license: LGPL License
+  summary: 'Handles polygonal shapes in 2D and includes python bindings for gpc'
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml

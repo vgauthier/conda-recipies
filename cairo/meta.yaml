@@ -8,21 +8,23 @@ source:
   md5: 8e4ff32b82c3b39387eb6f5c59ef848e
 
 build:
-  number: 2
+  number: 4
 
 requirements:
   build:
-    - freetype
+    - freetype >=2.5.0
     - fontconfig
     - libpng
-    - pixman
     - zlib
+    - pixman
+
   run:
-    - freetype
+    - freetype >=2.5.0
     - fontconfig
     - libpng
-    - pixman
     - zlib
+    - pixman
+
 
 about:
   home: http://cairographics.org/

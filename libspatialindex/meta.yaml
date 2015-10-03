@@ -1,0 +1,21 @@
+package:
+  name: libspatialindex
+  version: 1.8.5
+
+source:
+  fn: spatialindex-src-1.8.5.tar.gz
+  url: http://download.osgeo.org/libspatialindex/spatialindex-src-1.8.5.tar.gz
+
+build:
+  number: 2
+
+requirements:
+  build:
+    - zlib
+  run:
+    - zlib
+
+about:
+  home: http://libspatialindex.github.io/
+  license: MIT
+  summary: "Rtree"
