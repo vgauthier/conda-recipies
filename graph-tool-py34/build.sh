@@ -15,11 +15,12 @@ if [ `uname` == Darwin ]; then
   export PYTHON_LDFLAGS="-lpython3.4m -ldl -framework CoreFoundation -framework CoreFoundation"
   export PKG_CONFIG_PATH="${PREFIX}/lib/pkgconfig:/opt/X11/lib/pkgconfig"
   export CXXFLAGS="-mmacosx-version-min=${MACOSX_VERSION_MIN}"
-  export CXXFLAGS="${CXXFLAGS} -std=c++14 -stdlib=libc++ -W, -Wno-unused-parameter -Wno-unused-local-typedefs"
+  export WARMING_FLAGS="-Wno-unused-parameter -Wno-unused-local-typedefs -Wno-missing-field-initializers -Wno-sign-compare -Wno-macro-redefined -Wno-unused-function"
+  export CXXFLAGS="${CXXFLAGS} ${WARMING_FLAGS} -std=c++14 -stdlib=libc++"
   export LINKFLAGS="-mmacosx-version-min=${MACOSX_VERSION_MIN} "
   export LINKFLAGS="${LINKFLAGS} -stdlib=libc++ -L${LIBRARY_PATH} -L${PREFIX}/lib/python3.4/config-3.4m -Wl,-headerpad_max_install_names -fPIC -fno-common"
   export INCLUDE_PATH="${PREFIX}/include"
-
+  export IGNORE_WARNINGS=1
 
 
   # fix some issue with pyqt
