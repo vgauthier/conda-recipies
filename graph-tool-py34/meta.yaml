@@ -1,11 +1,11 @@
 ## Python 3 only
 package:
   name: graph-tool
-  version: "2.9"
+  version: "2.10"
 
 source:
   git_url: https://git.skewed.de/count0/graph-tool.git
-  git_tag: release-2.9
+  git_tag: release-2.10
 
 requirements:
   # Packages required to build the package. python and numpy must be
@@ -27,7 +27,7 @@ requirements:
     - cgal ==4.5.2
     - mpfr
     - gmp
-    - pycairo # [py3k]
+    - pycairo
     - libpng15
 
   run:
@@ -47,7 +47,7 @@ requirements:
     - cgal ==4.5.2
     - mpfr
     - gmp
-    - pycairo # [py3k]
+    - pycairo
     - libpng15
 
 build:
