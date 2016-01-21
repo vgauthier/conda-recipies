@@ -1,0 +1,21 @@
+package:
+  name: libffi
+  version: 3.2.1
+
+source:
+  git_url: https://github.com/atgreen/libffi.git
+  git_rev: v3.2.1
+
+build:
+  number: 1
+
+requirements:
+  build:
+    - zlib
+  run:
+    - zlib
+
+about:
+  home: https://sourceware.org/libffi/
+  license: liberal license
+  summary: "A portable foreign-function interface library"

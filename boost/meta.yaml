@@ -1,11 +1,10 @@
 package:
     name: boost
-    version: "1.58.0"
+    version: "1.60.0"
 
 source:
-    fn: boost_1_58_0.tar.bz2 # [unix]
-    url: https://downloads.sourceforge.net/project/boost/boost/1.58.0/boost_1_58_0.tar.bz2 # [unix]
-    sha256: "fdfc204fc33ec79c99b9a74944c3e54bd78be4f7f15e260c0e2700a36dc7d3e5"
+    fn: boost_1_60_0.tar.gz # [unix]
+    url: http://downloads.sourceforge.net/project/boost/boost/1.60.0/boost_1_60_0.tar.gz?r=http%3A%2F%2Fsourceforge.net%2Fprojects%2Fboost%2Ffiles%2Fboost%2F1.60.0%2F&ts=1451655402&use_mirror=netcologne # [unix]
 requirements:
   # Packages required to build the package. python and numpy must be
   # listed explicitly if they are required.
@@ -19,7 +18,7 @@ requirements:
     - zlib >=1.2.7
 
 build:
-  number: 4
+  number: 0
 
 about:
   home: http://www.boost.org/

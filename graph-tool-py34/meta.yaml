@@ -1,11 +1,11 @@
 ## Python 3 only
 package:
   name: graph-tool
-  version: "2.10"
+  version: "2.12"
 
 source:
   git_url: https://git.skewed.de/count0/graph-tool.git
-  git_tag: release-2.10
+  git_tag: release-2.12
 
 requirements:
   # Packages required to build the package. python and numpy must be
@@ -51,10 +51,10 @@ requirements:
     - libpng15
 
 build:
-  number: 1
+  number: 2
   binary_relocation: true
 
 about:
   home: http://graph-tool.skewed.de/
   license: GPLv3
-  summary: "Graph-tool is an efficient Python module for manipulation and statistical analysis of graphs (a.k.a. networks)."
+  summary: "Graph-tool is an efficient Python module for manipulation and statistical analysis of graphs (a.k.a. networks). Build with CLANG without GTK3 and without openMP (openmp is not currently supported by clang)"

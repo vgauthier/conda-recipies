@@ -23,12 +23,16 @@ mkdir -vp ${PREFIX}/bin;
 
 export LIBRARY_PATH="${PREFIX}/lib"
 
-if [ ${PY_VER} == "3.4" ] || [ ${PY_VER} == "3.5" ]; then
+wget https://gist.githubusercontent.com/tdsmith/9026da299ac1bfd3f419/raw/b73a919c38af08941487ca37d46e711864104c4d/boost-python.diff
+patch ./tools/build/src/tools/python.jam < boost-python.diff
+
+if [ ${PY_VER} == "3.4" ]; then
 ./bootstrap.sh --prefix="${PREFIX}" \
   --with-python-version="${PY_VER}" \
   --with-python-root="${PREFIX}" \
   --with-python="${PYTHON}/bin/python3" \
-  --with-libraries="python,graph,regex,thread,iostreams,math" \
+  --with-signals \
+  --with-libraries="python,graph,regex,thread,iostreams" \
   --with-toolset=clang \
   address-model=64 \
   --libdir="${LIBRARY_PATH}";
@@ -39,6 +43,7 @@ if [ ${PY_VER} == "2.7" ]; then
     --with-python-version="${PY_VER}" \
     --with-python-root="${PREFIX}" \
     --with-python="${PYTHON}/bin/python" \
+    --with-signals \
     --with-libraries="python,graph,regex,thread,iostreams" \
     --with-toolset=clang \
     address-model=64 \
@@ -67,23 +72,6 @@ if [ $(uname) == Darwin ]; then
 
 
   ./b2 clean
-  # OSX, Python 3.5
-  if [ ${PY_VER} == "3.5" ]; then
-    ./b2 \
-      address-model=64 architecture=x86 \
-      toolset=clang \
-      threading=single \
-      link=static runtime-link=static \
-      include="${PREFIX}/include/python3.5m" \
-      cxxflags="${CXXFLAGS}" \
-      linkflags="${LINKFLAGS}" \
-      python=$PY_VER \
-      define=BOOST_SYSTEM_NO_DEPRECATED \
-      -j$(sysctl -n hw.ncpu) \
-      --layout=tagged \
-      --user-config=project-config.jam \
-      stage release
-  fi
   # OSX, Python 3.4
   if [ ${PY_VER} == "3.4" ]; then
     ./b2 \
@@ -92,9 +80,8 @@ if [ $(uname) == Darwin ]; then
       threading=single \
       link=static runtime-link=static \
       include="${PREFIX}/include/python3.4m" \
-      cxxflags="${CXXFLAGS}" \
-      linkflags="${LINKFLAGS}" \
-      python="${PY_VER}" \
+      cxxflags="${CXXFLAGS}" linkflags="${LINKFLAGS}" \
+      python=$PY_VER \
       define=BOOST_SYSTEM_NO_DEPRECATED \
       -j$(sysctl -n hw.ncpu) \
       --layout=tagged \
@@ -108,8 +95,7 @@ if [ $(uname) == Darwin ]; then
       threading=single \
       link=static runtime-link=static \
       include="${PREFIX}/include/python2.7" \
-      cxxflags="${CXXFLAGS}" \
-      linkflags="${LINKFLAGS}" \
+      cxxflags="${CXXFLAGS}" linkflags="${LINKFLAGS}" \
       python=$PY_VER \
       define=BOOST_SYSTEM_NO_DEPRECATED \
       -j$(sysctl -n hw.ncpu) \

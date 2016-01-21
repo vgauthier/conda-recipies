@@ -1,0 +1,27 @@
+package:
+    name: gdal
+    version: "1.11.3"
+
+source:
+    fn: gdal-1.11.3.tar.gz
+    url: http://download.osgeo.org/gdal/1.11.3/gdal-1.11.3.tar.gz
+
+requirements:
+  # Packages required to build the package. python and numpy must be
+  # listed explicitly if they are required.
+  build:
+    - python
+    - bzip2 >=1.0.6
+    - zlib >=1.2.7
+  run:
+    - python
+    - bzip2 >=1.0.6
+    - zlib >=1.2.7
+
+build:
+    number: 0
+
+about:
+  home: http://www.gdal.org/
+  license: MIT
+  summary: "GDAL is a translator library for raster and vector geospatial data formats that is released under an X/MIT style Open Source license by the Open Source Geospatial Foundation. As a library, it presents a single raster abstract data model and vector abstract data model to the calling application for all supported formats. It also comes with a variety of useful commandline utilities for data translation and processing. The NEWS page describes the September 2015 GDAL/OGR 2.0.1 release."
