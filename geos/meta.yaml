@@ -1,0 +1,27 @@
+package:
+    name: geos
+    version: "3.5.0"
+
+source:
+    fn: geos-3.5.0.tar.bz2
+    url: http://download.osgeo.org/geos/geos-3.5.0.tar.bz2
+
+requirements:
+  # Packages required to build the package. python and numpy must be
+  # listed explicitly if they are required.
+  build:
+    - python
+    - bzip2 >=1.0.6
+    - zlib >=1.2.7
+  run:
+    - python
+    - bzip2 >=1.0.6
+    - zlib >=1.2.7
+
+build:
+    number: 2
+
+about:
+  home: http://trac.osgeo.org/geos/
+  license: MIT
+  summary: "GEOS (Geometry Engine - Open Source) is a C++ port of the ​Java Topology Suite (JTS)"
