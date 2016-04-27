@@ -1,26 +1,27 @@
 package:
     name: cgal
-    version: "4.5.2"
+    version: "4.7"
 
 source:
-    fn: CGAL-4.5.2.tar.bz2 # [unix]
-    url: https://gforge.inria.fr/frs/download.php/file/34511/CGAL-4.5.2.tar.bz2 # [unix]
-    md5: 8d0b4dc414477e566e8f1940594ff805
+    fn: CGAL-4.7.tar.gz
+    url: https://github.com/CGAL/cgal/releases/download/releases/CGAL-4.7/CGAL-4.7.tar.gz
 
 requirements:
   # Packages required to build the package. python and numpy must be
   # listed explicitly if they are required.
   build:
-    - boost
+    - python
+    - boost ==1.58
     - gmp
     - mpfr
+    - zlib
   run:
-    - boost
+    - boost ==1.58
     - gmp
     - mpfr
 
 build:
-  number: 2
+  number: 4
 
 about:
   home: http://www.cgal.org/

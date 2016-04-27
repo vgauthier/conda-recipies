@@ -11,18 +11,28 @@ export MACOSX_DEPLOYMENT_TARGET="10.10"
 # Seems that sometimes this is required
 chmod -R 777 .*
 
+export GMP_LIBRARIES=$PREFIX/lib
+export GMP_INCLUDE_DIR=$PREFIX/lib
+export MPFR_LIBRARIES=$PREFIX/lib
+export MPFR_INCLUDE_DIR=$PREFIX/lib
 
-export BOOST_ROOT=${PREFIX}
-export GMP_ROOT=${PREFIX}
-export MPFR_ROOT=${PREFIX}
+export CXXFLAGS="-arch x86_64 -fPIC"
 
 # Setup the boost building, this is fairly simple.
-cmake -DCMAKE_INSTALL_PREFIX:PATH=${PREFIX} \
-  -DCMAKE_BUILD_WITH_INSTALL_RPATH=ON \
-  -DWITH_CGAL_Qt3=OFF \
-  -DWITH_CGAL_Qt4=OFF \
-  -DWITH_CGAL_ImageIO=OFF \
-  -DCMAKE_LIBRARY_PATH=${PREFIX}/lib .
+cmake -DGMP_LIBRARIES="-L$PREFIX/lib -lgmp" \
+    -DCGAL_CXX_FLAGS="-I$PREFIX/include" \
+    -DCGAL_MODULE_LINKER_FLAGS="-L$PREFIX/lib" \
+    -DCGAL_SHARED_LINKER_FLAGS="-L$PREFIX/lib" \
+    -DWITH_CGAL_Qt3=OFF \
+    -DWITH_CGAL_Qt4=OFF \
+    -DWITH_CGAL_Qt5=OFF \
+    -DWITH_CGAL_ImageIO=OFF \
+    -DGMP_INCLUDE_DIR=$PREFIX/include \
+    -DCMAKE_INSTALL_PREFIX=$PREFIX \
+    '-DCMAKE_INSTALL_RPATH=$ORIGIN/../lib' .
+
+unset GMP_LIBRARIES GMP_INCLUDE_DIR MPFR_LIBRARIES MPFR_INCLUDE_DIR
+
 make
 make install
 

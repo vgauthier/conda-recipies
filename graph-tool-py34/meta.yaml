@@ -1,11 +1,11 @@
 ## Python 3 only
 package:
   name: graph-tool
-  version: "2.12"
+  version: "2.16"
 
 source:
   git_url: https://git.skewed.de/count0/graph-tool.git
-  git_tag: release-2.12
+  git_tag: release-2.16
 
 requirements:
   # Packages required to build the package. python and numpy must be
@@ -23,8 +23,8 @@ requirements:
     - cairomm
     - fontconfig
     - sparsehash >=2.0.2
-    - boost
-    - cgal ==4.5.2
+    - boost ==1.58
+    - cgal
     - mpfr
     - gmp
     - pycairo
@@ -43,8 +43,8 @@ requirements:
     - cairomm
     - fontconfig
     - sparsehash >=2.0.2
-    - boost
-    - cgal ==4.5.2
+    - boost ==1.58
+    - cgal
     - mpfr
     - gmp
     - pycairo

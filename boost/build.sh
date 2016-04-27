@@ -23,41 +23,32 @@ mkdir -vp ${PREFIX}/bin;
 
 export LIBRARY_PATH="${PREFIX}/lib"
 
-if [ ${PY_VER} == "3.4" ] || [ ${PY_VER} == "3.5" ]; then
-./bootstrap.sh --prefix="${PREFIX}" \
-  --with-python-version="${PY_VER}" \
-  --with-python-root="${PREFIX}" \
-  --with-python="${PYTHON}/bin/python3" \
-  --with-libraries="python,graph,regex,thread,iostreams,math" \
-  --with-toolset=clang \
-  address-model=64 \
-  --libdir="${LIBRARY_PATH}";
-fi
+if [ $(uname) == Darwin ]; then
+  export MACOSX_VERSION_MIN=10.8
+  export CXXFLAGS="-mmacosx-version-min=${MACOSX_VERSION_MIN}" #-arch x86_64 -fPIC
+  export CXXFLAGS="${CXXFLAGS} -std=c++11 -stdlib=libc++"
+  export LINKFLAGS="-mmacosx-version-min=${MACOSX_VERSION_MIN}"
+  export LINKFLAGS="${LINKFLAGS} -stdlib=libc++ -L${LIBRARY_PATH} -L${LIBRARY_PATH} -Wl,-headerpad_max_install_names"
+  export INCLUDE_PATH="${PREFIX}/include"
 
-if [ ${PY_VER} == "2.7" ]; then
+  # --without-libraries="mpi,log,wave,context,coroutine" \
   ./bootstrap.sh --prefix="${PREFIX}" \
     --with-python-version="${PY_VER}" \
     --with-python-root="${PREFIX}" \
-    --with-python="${PYTHON}/bin/python" \
-    --with-libraries="python,graph,regex,thread,iostreams" \
+    --with-python="${PYTHON}/bin/python3" \
+    --with-libraries="python,graph,regex,thread,iostreams,math,graph_parallel" \
     --with-toolset=clang \
+    --without-icu \
     address-model=64 \
     --libdir="${LIBRARY_PATH}";
-fi
-
-if [ $(uname) == Darwin ]; then
-  export MACOSX_VERSION_MIN=10.8
-  export CXXFLAGS="-mmacosx-version-min=${MACOSX_VERSION_MIN} -arch i386 -fPIC"
-  export CXXFLAGS="${CXXFLAGS} -std=c++11 -stdlib=libc++"
-  export LINKFLAGS="-mmacosx-version-min=${MACOSX_VERSION_MIN} "
-  export LINKFLAGS="${LINKFLAGS} -stdlib=libc++ -L${LIBRARY_PATH} -L${LIBRARY_PATH} -Wl,-headerpad_max_install_names"
-  export INCLUDE_PATH="${PREFIX}/include"
 
   sed -i'.bak' -e's/^using python.*;//' ./project-config.jam
 
   export PY_PREFIX=`$PYTHON -c "from __future__ import print_function; import sys; print(sys.prefix)"`
   export PY_INC=`$PYTHON -c "from __future__ import print_function; import distutils.sysconfig; print(distutils.sysconfig.get_python_inc(True))"`
 
+  #echo "using darwin : clang++ ;\n" >> ./project-config.jam
+  #echo "using mpi ;" >> ./project-config.jam
   echo "using python" >> ./project-config.jam
   echo "     : $PY_VER" >> ./project-config.jam
   echo "     : $PYTHON" >> ./project-config.jam
@@ -65,59 +56,24 @@ if [ $(uname) == Darwin ]; then
   echo "     : $PY_PREFIX/lib" >> ./project-config.jam
   echo "     ;" >> ./project-config.jam
 
-
-  ./b2 clean
-  # OSX, Python 3.5
-  if [ ${PY_VER} == "3.5" ]; then
-    ./b2 \
-      address-model=64 architecture=x86 \
-      toolset=clang \
-      threading=single \
-      link=static runtime-link=static \
-      include="${PREFIX}/include/python3.5m" \
-      cxxflags="${CXXFLAGS}" \
-      linkflags="${LINKFLAGS}" \
-      python=$PY_VER \
-      define=BOOST_SYSTEM_NO_DEPRECATED \
-      -j$(sysctl -n hw.ncpu) \
-      --layout=tagged \
-      --user-config=project-config.jam \
-      stage release
-  fi
-  # OSX, Python 3.4
-  if [ ${PY_VER} == "3.4" ]; then
-    ./b2 \
-      address-model=64 architecture=x86 \
-      toolset=clang \
-      threading=single \
-      link=static runtime-link=static \
-      include="${PREFIX}/include/python3.4m" \
-      cxxflags="${CXXFLAGS}" \
-      linkflags="${LINKFLAGS}" \
-      python="${PY_VER}" \
-      define=BOOST_SYSTEM_NO_DEPRECATED \
-      -j$(sysctl -n hw.ncpu) \
-      --layout=tagged \
-      --user-config=project-config.jam \
-      stage release
-  fi
-  if [ ${PY_VER} == "2.7" ]; then
-    ./b2 \
-      address-model=64 architecture=x86 \
-      toolset=clang \
-      threading=single \
-      link=static runtime-link=static \
-      include="${PREFIX}/include/python2.7" \
-      cxxflags="${CXXFLAGS}" \
-      linkflags="${LINKFLAGS}" \
-      python=$PY_VER \
-      define=BOOST_SYSTEM_NO_DEPRECATED \
-      -j$(sysctl -n hw.ncpu) \
-      --layout=tagged \
-      --user-config=project-config.jam \
-      stage release
-  fi
-  ./b2 install
+  ./b2 headers
+  #--with-mpi \
+  ./b2 \
+    address-model=32_64 \
+    architecture=x86 \
+    pch=off \
+    toolset=clang \
+    link=shared,static \
+    threading=multi,single \
+    include="${PREFIX}/include/python3.4m" \
+    cxxflags="${CXXFLAGS}" \
+    linkflags="${LINKFLAGS}" \
+    python="${PY_VER}" \
+    --layout=tagged \
+    -d2 \
+    -j8 \
+    --user-config=project-config.jam \
+    install;
 fi
 
 exit 0

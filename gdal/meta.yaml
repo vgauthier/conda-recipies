@@ -19,7 +19,7 @@ requirements:
     - zlib >=1.2.7
 
 build:
-    number: 0
+    number: 1
 
 about:
   home: http://www.gdal.org/
